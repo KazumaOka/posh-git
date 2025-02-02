@@ -267,6 +267,10 @@ function script:expandGitAlias($cmd, $rest) {
             return "git $known$rest"
         }
 
+        if (($alias -match '^(?<beforeSemicolon>.*?)\s*;') -and ($Matches['beforeSemicolon'] -match '^.*?:\s*(?<afterColon>.*)$')) {
+            return "git $($Matches['afterColon'])$rest"
+        }
+
         return "git $alias$rest"
     }
     else {
