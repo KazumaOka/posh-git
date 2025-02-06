@@ -38,6 +38,7 @@ $Global:TortoiseGitSettings = new-object PSObject -Property @{
         "rename" = "rename";
         "mv" = "rename";
         "repocreate" = "repocreate";
+        "revisiongraph" = "revisiongraph";
         "init" = "repocreate";
         "repostatus" = "repostatus";
         "status" = "repostatus";
