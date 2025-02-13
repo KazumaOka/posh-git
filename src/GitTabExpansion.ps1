@@ -267,6 +267,14 @@ function script:expandGitAlias($cmd, $rest) {
             return "git $known$rest"
         }
 
+        if (
+                 ($alias -match '^\s*\!\s*(?<functionName>\S+)\s*\(\s*\)\s*\{\s*(?<functionBody>.+)\s*\}\s*;\s*(?<functionCall>\S+)\s*$') `
+            -and ($Matches['functionName'] -ceq $Matches['functionCall']) `
+            -and ($Matches['functionBody'] -match ':\s*(git)?\s*(?<nullSubCommand>\S+)\s*;')
+        ) {
+            return "git $($Matches['nullSubCommand'])$rest"
+        }
+
         return "git $alias$rest"
     }
     else {
