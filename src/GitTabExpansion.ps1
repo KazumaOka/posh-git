@@ -58,7 +58,8 @@ $script:someCommands = @('add','am','annotate','archive','bisect','blame','branc
                          'cherry-pick','citool','clean','clone','commit','config','describe','diff','difftool','fetch',
                          'format-patch','gc','grep','gui','help','init','instaweb','log','merge','mergetool','mv',
                          'notes','prune','pull','push','rebase','reflog','remote','rerere','reset','restore','revert','rm',
-                         'shortlog','show','stash','status','submodule','svn','switch','tag','whatchanged', 'worktree')
+                         'shortlog','show','stash','status','submodule','svn','switch','tag','whatchanged', 'worktree',
+                         'merge-base')
 
 if ((($PSVersionTable.PSVersion.Major -eq 5) -or $IsWindows) -and ($script:GitVersion -ge [System.Version]'2.16.2')) {
     $script:someCommands += 'update-git-for-windows'
@@ -471,7 +472,7 @@ function GitTabExpansionInternal($lastBlock, $GitStatus = $null) {
         }
 
         # Handles git <cmd> <ref>
-        "^(?:cherry|cherry-pick|diff|difftool|log|merge|rebase|reflog\s+show|reset|revert|show).* (?<ref>\S*)$" {
+        "^(?:cherry|cherry-pick|diff|difftool|log|merge|rebase|reflog\s+show|reset|revert|show|merge-base).* (?<ref>\S*)$" {
             gitBranches $matches['ref'] $true
             gitTags $matches['ref']
         }

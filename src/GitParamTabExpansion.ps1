@@ -38,6 +38,7 @@ $shortGitParams = @{
     switch = 'c C d f m q t'
     tag = 'a s u f d v n l m F'
     whatchanged = 'p'
+    'merge-base' = 'a'
 }
 
 # Variable is used in GitTabExpansion.ps1
@@ -83,6 +84,7 @@ $longGitParams = @{
     switch = 'create force-create detach guess no-guess force discard-changes merge conflict= quiet no-progress track no-track orphan ignore-other-worktrees recurse-submodules no-recurse-submodules'
     tag = 'annotate sign local-user force delete verify list sort column no-column contains points-at message file cleanup'
     whatchanged = 'since'
+    'merge-base' = 'octopus independent is-ancestor fork-point all'
 }
 
 $shortVstsGlobal = 'h o'
